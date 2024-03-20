@@ -1,9 +1,0 @@
-cff-version: 1.0.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Morgan, Barton
-    given-names: Lucy E., Russell R.
-    orcid: https://orcid.org/0000-0003-0987-2350, https://orcid.org/0000-0002-5054-2006
-title: "waFm SPC"
-version: 1.0.0
-date-released: 2024-03-20 
