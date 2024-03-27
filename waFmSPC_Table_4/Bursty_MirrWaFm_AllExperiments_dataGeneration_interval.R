@@ -99,29 +99,28 @@ for (kk in 1:G){
         # interval sampling here
         ic_index_part = 1:N_int
         ic_index = floor((1/(2*frac_samp)) + ((ic_index_part - 1) / frac_samp))
-        ic_queue = Fqueue[ic_index]
         # reduce ic_index to only points of change in number in system
-        ic_index = c(1,which(diff(Fqueue)==1)+1)
+        ic_index = ic_index[(which(diff(Fqueue[ic_index])!=0))]
         ic_queue = Fqueue[ic_index]
         ic_times = Ftime[ic_index]
         
         # interval-censored batch high-frequency samples
         
-        times<- c(0,ic_times,batch_len)
+        ic_times<- c(0,ic_times,batch_len)
         queue<- c(NIS_queue[(min_i-1)],ic_queue,NIS_queue[(max_i)])
-        c_brkpt <- numeric(length(times))
+        c_brkpt <- numeric(length(ic_times))
         
         j = 1
-        for (i in 1:length(times))
+        for (i in 1:length(ic_times))
         {
-          c_brkpt[j] <- floor(times[i]/min_int)  #Calculate max order of; pts w/ each int.
+          c_brkpt[j] <- floor(ic_times[i]/min_int)  #Calculate max order of; pts w/ each int.
           j = j+1
         }
         
         Fqueue <- numeric(c_brkpt[length(c_brkpt)])
         Ftime <- numeric(c_brkpt[length(c_brkpt)])
         
-        for (i in 1:(length(times)-1))
+        for (i in 1:(length(ic_times)-1))
         {
           for (j in (c_brkpt[i]+1):c_brkpt[i+1])
           {
@@ -201,29 +200,28 @@ for (kk in 1:G){
         # interval sampling here
         ic_index_part = 1:N_int
         ic_index = floor((1/(2*frac_samp)) + ((ic_index_part - 1) / frac_samp))
-        ic_queue = Fqueue[ic_index]
         # reduce ic_index to only points of change in number in system
-        ic_index = c(1,which(diff(Fqueue)==1)+1)
+        ic_index = ic_index[(which(diff(Fqueue[ic_index])!=0))]
         ic_queue = Fqueue[ic_index]
         ic_times = Ftime[ic_index]
         
         # interval-censored batch high-frequency samples
         
-        times<- c(0,ic_times,batch_len)
+        ic_times<- c(0,ic_times,batch_len)
         queue<- c(NIS_queue[(min_i-1)],ic_queue,NIS_queue[(max_i)])
-        c_brkpt <- numeric(length(times))
+        c_brkpt <- numeric(length(ic_times))
         
         j = 1
-        for (i in 1:length(times))
+        for (i in 1:length(ic_times))
         {
-          c_brkpt[j] <- floor(times[i]/min_int)  #Calculate max order of; pts w/ each int.
+          c_brkpt[j] <- floor(ic_times[i]/min_int)  #Calculate max order of; pts w/ each int.
           j = j+1
         }
         
         Fqueue <- numeric(c_brkpt[length(c_brkpt)])
         Ftime <- numeric(c_brkpt[length(c_brkpt)])
         
-        for (i in 1:(length(times)-1))
+        for (i in 1:(length(ic_times)-1))
         {
           for (j in (c_brkpt[i]+1):c_brkpt[i+1])
           {
