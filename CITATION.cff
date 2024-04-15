@@ -10,7 +10,7 @@ type: software
 authors:
   - orcid: 'https://orcid.org/0000-0003-0987-2350'
     given-names: Lucy Elizabeth
-    family-names: Gullon
+    family-names: Morgan
     email: l.e.morgan@lancaster.ac.uk
     affiliation: BT | Lancaster University
   - given-names: Russell
